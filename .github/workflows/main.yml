@@ -23,13 +23,19 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - name: Step 1 - Log the pre-build disc space
+        run: ls
+        
+      - name: step 2 - Checkout the main GitHub branch
+        uses: actions/checkout@v3
+        
+      - name: Step 3 - Set up JDK 1.8
+        uses: actions/setup-java@v1
+        with: 
+          java-version: 1.8
 
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: sh ./Script.sh
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo empty 
+      - name: Step 4 - Build your your Jakarta web app with Maven
+        run: echo mvn -B package --file pom.xml
+          
+      - name: Step 5 - List Ubuntu Environment Variables
+        run: env
