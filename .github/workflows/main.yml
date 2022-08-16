@@ -35,7 +35,7 @@ jobs:
           java-version: 1.8
 
       - name: Step 4 - Build your your Jakarta web app with Maven
-        run: sh ./mvnw install
+        run: sh ./mainapp/mvnw install
           
       - name: Step 5 - List Ubuntu Environment Variables
         run: env
